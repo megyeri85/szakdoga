@@ -1,0 +1,321 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+
+    margin: 0;
+}
+
+#wrapper {
+    /* background-color: rgb(66,41,28);*/
+    background: url("images/bg.gif") repeat scroll 0 0;
+
+}
+
+#header {
+    background: url("images/bg-header.png") no-repeat scroll center top;
+    height: 115px;
+}
+
+#header2 {
+    height: 115px;
+    width: 960px;
+    margin: auto;
+}
+
+#logo {
+    height: 80px;
+    width: 250px;
+    float: left;
+}
+
+#menu {
+    height: 35px;
+    width: 710px;
+    /*margin-left: 250px;*/
+    float: left;
+    margin-top: 63px;
+
+}
+
+#bigcontent {
+    background: url("images/bg-page.gif") repeat scroll 0 0;
+    min-height: 850px;
+    width: 960px;
+    margin: auto;
+
+}
+
+#leftside {
+    width: 250px;
+    min-height: 830px;
+    float: left;
+    border-right: solid 1px #42291d;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#rightside {
+    margin-left: 250px;
+    width: 710px;
+    min-height: 850px;
+
+}
+
+#belepes {
+    border-bottom: solid 1px #42291d;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 10px;
+    min-width: 230px;
+    min-height: 160px;
+}
+
+.mezo {
+    background-color: #ecd0a8;
+    color: #42291d;
+    border-radius: 7px;
+    border: 1px solid #42291d;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+
+}
+
+#belepes p {
+    color: #ecd0a8;
+    text-align: center;
+    margin: 7px;
+
+}
+
+#gomb_belepes, #gomb_kilepes {
+    color: #42291d;
+    background-color: #eb6909;
+    border: none;
+    border-radius: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 12px;
+    margin-bottom: 10px;
+    display: block;
+
+}
+
+.urlap fieldset {
+
+    width: 400px;
+    margin: 50px auto 0 auto;
+    color: #eb6909;
+    border-color: #ecd0a8;
+    padding: 10px;
+
+}
+
+.urlap fieldset legend {
+    font-size: 18px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.urlap fieldset span {
+    cursor: help;
+}
+
+.urlap fieldset input {
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.urlap fieldset input.mentes, .mentes {
+    color: #42291d;
+    background-color: #eb6909;
+    border: none;
+    border-radius: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    cursor: pointer;
+    padding: 2px 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.urlap fieldset input.mentes:hover, .mentes:hover {
+    background-color: #dc6709;
+}
+
+.urlap fieldset input.mentes:active , .mentes:active {
+    position: relative;
+    top: 1px;
+}
+
+.urlap label.mezofelirat {
+    color: #ecd0a8;
+    font-size: 16px;
+    padding-left: 12px;
+    padding-right: 6px;
+
+}
+
+.urlap label {
+    color: #ecd0a8;
+    font-size: 16px;
+
+}
+
+.urlap select, #rendeles select {
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #ecd0a8;
+    margin-left: 5px;
+}
+
+.red {
+    border: 2px solid red;
+}
+
+#terkep {
+    display: inline-block;
+    margin-top: 100px;
+    margin-left: 55px;
+    color: #ecd0a8;
+
+}
+
+div #pelda {
+    width: 80%;
+    padding-top: 100px;
+    margin: auto;
+
+}
+
+div .myButton {
+    border: 1px solid #42291D;
+    margin: 2px;
+    background-color: #eb6909;
+    border-radius: 9px;
+    font-size: 22px;
+    padding-left: 7px;
+    font-family: arial;
+    color: #42291D;
+
+}
+
+div .myButton:hover {
+    cursor: pointer;
+}
+
+div .myContent {
+    background-color: red;
+}
+
+.db {
+    width: 20px;
+
+}
+
+.termek span {
+    margin-right: 20px;
+}
+
+#datumfelirat {
+    color: #e7d09c;
+    text-align: center;
+    padding-top: 50px;
+}
+
+#datum {
+    margin: 20px auto 30px auto;
+    border-radius: 4px;
+    background-color: #ecd0a8;
+    display: block;
+}
+
+#rendeles select {
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #ecd0a8;
+    display: block;
+    margin: 20px auto -20px auto;
+}
+
+#rendeles > #accordion > h3 {
+    background-color: #ecd0a8;
+    text-align: center;
+    border-radius: 10px;
+    margin: 10px;
+    color: #432a1e;
+}
+#rendeles > #accordion > div > table{
+    background-color: rgb(221, 221, 221);
+    margin: auto;
+    padding: 4px;
+    border-radius: 5px;
+}
+
+
+.minusz{
+    padding-left: 6px;
+    padding-right: 6px;
+    cursor: pointer;
+    margin-right: 5px;
+    background-color: #EB6909;
+}
+
+.plusz{
+    padding-left: 4px;
+    padding-right: 4px;
+    cursor: pointer;
+    margin-left: 5px;
+    background-color: #EB6909;
+}
+
+table#osszegzes{
+    background-color: rgb(221, 221, 221);
+    margin: 20px auto 10px auto;
+    border-radius: 5px;
+
+    }
+#osszesites{
+    text-align: center;
+    font-size: 30px;
+    padding-top: 20px;
+    color: #ECD0A8;
+}
+
+#submit, #megse{
+    color: #42291d;
+    background-color: #eb6909;
+    border: none;
+    border-radius: 7px;
+
+    cursor: pointer;
+    padding: 2px 10px;
+}
+#submit{
+    margin-left: 60px;
+}
+#megse{
+    margin-left: 400px;
+}
+
+#megse:hover, #submit:hover {
+    background-color: #dc6709;
+}
+
+#submit:active , #megse:active {
+    position: relative;
+    top: 1px;
+}
+
+
+
+
