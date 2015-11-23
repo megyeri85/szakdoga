@@ -1,4 +1,4 @@
-admin felvitel
+
 
 <div class="urlap">
     <form>
@@ -15,6 +15,7 @@ admin felvitel
 
 
             <label class="mezofelirat">Felhasználó név:</label><input type="text" name="felhasznalo_nev"></br></br>
+            <label class="mezofelirat">E-mail cím: </label><input type="text" name="email"></br></br>
             <input type="button" id="felvesz" class="mentes" value="Felvesz">
         </fieldset>
     </form>
@@ -32,18 +33,27 @@ admin felvitel
             if (felhasznalo_nev==""){
                 alert("Addja meg a felhasználó nevét!");
             }else{
-                console.log("minden be van irva");
 
-                $.ajax({
-                    type: "POST",
-                    url: "includes/admin_letrehozas.php",
-                    data: {jog: jog, felhasznalo_nev: felhasznalo_nev},
-                    success: function (valasz) {
-                        alert(valasz);
-                        $("#jog_valasztas").val(0);
-                        $("input[name='felhasznalo_nev']").val("");
-                    }
-                });
+                if(email_ellenoriz($("input[name='email']"))){
+                    var email = $("input[name='email']").val();
+
+                    $.ajax({
+                        type: "POST",
+                        url: "includes/admin_letrehozas.php",
+                        data: {jog: jog, felhasznalo_nev: felhasznalo_nev, email:email},
+                        success: function (valasz) {
+                            alert(valasz);
+                            $("#jog_valasztas").val(0);
+                            $("input[name='felhasznalo_nev']").val("");
+                        }
+                    });
+
+
+                }else{
+                    alert("Az e-mail cím hibás")
+                }
+
+
             }
         }
 

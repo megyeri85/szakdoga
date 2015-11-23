@@ -7,7 +7,8 @@ if (!jog_ellenorzes(ADMIN)) {
 include("connect.inc.php");
 
 
-if (isset($_POST["felhasznalo_nev"]) && isset($_POST["jog"])) {
+if (isset($_POST["felhasznalo_nev"]) && isset($_POST["jog"]) && isset($_POST["email"])) {
+    $email = $conn->real_escape_string($_POST["email"]);
     $felhasznalo_nev = $conn->real_escape_string($_POST["felhasznalo_nev"]);
     $jog = $conn->real_escape_string($_POST["jog"]);
     $sql = "select count(*) as db  from `felhasznalok` where `nev`='$felhasznalo_nev'";
@@ -19,7 +20,7 @@ if (isset($_POST["felhasznalo_nev"]) && isset($_POST["jog"])) {
     if (uresmezo_ellenorzes($felhasznalo_nev) && ($jog == 2 || $jog == 3)) {
         $ins = "INSERT INTO `felhasznalok`(`fk_vasarlo_id`, `nev`, `jelszo`, `jog_szint`) VALUES ('0','$felhasznalo_nev', sha1('$felhasznalo_nev'),'$jog')";
         if ($conn->query($ins)) {
-            echo "Az új admin létrehozva";
+            echo "Az új admin létrehozva ".$email;
         } else {
             echo "mysql hiba";
         }

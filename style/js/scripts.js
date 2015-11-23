@@ -1,4 +1,4 @@
-function load_oldal(oldal) {
+function load_oldal(oldal,event) {
     deaktiv();
     $(event.target).closest(".fomenu").addClass("active");
     $.ajax({
@@ -69,6 +69,41 @@ function email_ellenoriz(mezo){
    }
 }
 
+function kategoria_ellenoriz(mezo){
+    if(mezo.val()==0){
+        mezo.next("span").show();
+
+        return false;
+
+    }else{
+        mezo.next("span").hide();
+        return true;
+
+    }
+}
+
+function szam_ellenoriz(mezo){
+    if(mezo.val().length >= 1 && mezo.val().match(/^\d+$/)){
+        mezo.nextAll("span:first").hide();
+        return true;
+
+    }else{
+        mezo.nextAll("span:first").show();
+        return false;
+    }
+}
+
+function suly_ellenoriz(mezo){
+    if(mezo.val().match(/^[1-9]+[0-9]*$/) || mezo.val().match(/^\d+[.]\d{1,2}$/)){
+        mezo.nextAll("span:first").hide();
+        return true;
+
+    }else{
+        mezo.nextAll("span:first").show();
+        return false;
+    }
+}
+
 function kosar_frissites(id,db){
     $.ajax({
         type: "POST",
@@ -83,3 +118,4 @@ function kosar_frissites(id,db){
     });
 
 }
+

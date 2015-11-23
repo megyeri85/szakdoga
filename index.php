@@ -7,18 +7,12 @@ require_once("includes/functions.php");
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="style/style.css">
-    <link href="style/styles.css" rel="stylesheet" media="screen">
-
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
 
 <!--    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">-->
-
-
-
-
-
-
-
+    <link href="style/styles.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" type="text/css" href="style/style.css">
     <title>Bécsi Pékség</title>
 
 </head>
@@ -49,6 +43,11 @@ require_once("includes/functions.php");
                 include("content/belepes.php");
                 ?>
             </div>
+            <div id="hirek">
+                <?php
+                include("content/hirek.php")
+                ?>
+            </div>
         </div>
         <div id="rightside">
 
@@ -66,7 +65,17 @@ require_once("includes/functions.php");
 <!--<script type="text/javascript" src="style/js/jquery.myAccordion.1.0.min.js"></script>-->
 
 <script src="style/js/date.js"></script>
-
+<!-- cdn for modernizr, if you haven't included it already -->
+<!--<script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>-->
+<!--<!-- polyfiller file to detect and load polyfills -->-->
+<!--<script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>-->
+<!--<script>-->
+<!--    webshims.setOptions('waitReady', false);-->
+<!--    webshims.setOptions('forms-ext', {types: 'date'});-->
+<!--    webshims.polyfill('forms forms-ext');-->
+<!--</script>-->
+<!---->
+<!--<input type="date" />-->
 
 
 </body>

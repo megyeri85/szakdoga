@@ -1,4 +1,4 @@
-aaa
+
 <?php
 include("../includes/connect.inc.php");
 ?>

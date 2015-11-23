@@ -102,9 +102,15 @@ body {
     margin-top: 12px;
     margin-bottom: 10px;
     display: block;
+    padding: 2px 5px 2px 5px;
 
 }
 
+.urlap{
+    margin-top: 50px;
+    display: inline-block;
+    margin-left: 145px;
+}
 .urlap fieldset {
 
     width: 400px;
@@ -244,21 +250,24 @@ div .myContent {
     border-radius: 4px;
     background-color: #ecd0a8;
     display: block;
-    margin: 20px auto -20px auto;
+    margin: 20px auto 0px auto;
 }
 
 #rendeles > #accordion > h3 {
-    background-color: #ecd0a8;
     text-align: center;
-    border-radius: 10px;
-    margin: 10px;
-    color: #432a1e;
+    /* background-color: green; */
+    width: 680px;
+    margin: auto;
+    background: green;
+    color: red;
 }
-#rendeles > #accordion > div > table{
-    background-color: rgb(221, 221, 221);
+#rendeles > #accordion > div {
+    background: rgb(221, 221, 221);
     margin: auto;
     padding: 4px;
     border-radius: 5px;
+    width: 673px;
+    margin: auto;
 }
 
 
@@ -316,6 +325,59 @@ table#osszegzes{
     top: 1px;
 }
 
+#termek_leiras, {
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+
+
+
+#calendar {
+    margin: 40px auto 40px auto;
+    display: inherit;
+}
+
+.event a {
+    background-color: #dc6709 !important;
+    background-image :none !important;
+    color: #ffffff !important;
+}
+
+#napi_gyartas_tablazat{
+    width: 500px;
+    margin: 20px auto 20px auto;
+    max-height: 600px;
+    overflow: auto;
+}
+#gyartas_tablazat{
+    background-color: wheat;
+    border-radius: 9px;
+    padding: 10px;
+}
+
+.hir{
+
+    margin: 10px 10px 0px 10px;
+    border-bottom: 1px solid #42291d;
+    text-align: center;
+    height: 135px;
+    overflow: auto;
+    color: #e7d09c;
+}
+#hirek>h1{
+    color: #ff6a09;
+    text-align: center;
+    border-bottom: 1px solid #42291d;
+    margin: 10px 10px 10px 10px;
+    padding-bottom: 10px;
+}
+.hirek{
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 15px;
+
+}
 
 
 

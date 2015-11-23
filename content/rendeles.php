@@ -14,7 +14,13 @@ require_once("functions.php");
 
 
     <p id="datumfelirat">Válaszd ki a kiszállítás napját:</p>
-    <input type="date" id="datum">
+<!--    <input type="date" id="datum">-->
+
+    <div class="container" style="display inherit">
+
+
+        <input type='text' id='calendar'>
+    </div>
 
     <div id="accordion">
         <?php
@@ -29,7 +35,7 @@ require_once("functions.php");
             $eredmeny2 = $conn->query($sql);
             echo "<table>";
             while ($termek = $eredmeny2->fetch_array(MYSQLI_ASSOC)) {
-                printf("<tr><td style='width: 425px'>%s</td><td style='width: 80px'>%s Kg</td><td style='width: 80px'>%s Ft</td><td><input class='minusz' type='button' value='-'><input value=%d  id='termek_%s' class='db' style='text-align: center'><input class='plusz' type='button' value='+'></td></tr>",
+                printf("<tr><td style='width: 200px'>%s</td><td >%s Kg</td><td >%s Ft</td><td><input class='minusz' type='button' value='-'><input value=%d  id='termek_%s' class='db' ><input class='plusz' type='button' value='+'></td></tr>",
                     $termek['termek_nev'], $termek['termek_suly'], $termek['termek_ar'], get_amount("termek_" . $termek['termek_id']), $termek['termek_id']);
             }
             echo "</table>";
@@ -57,6 +63,51 @@ require_once("functions.php");
         });
     });
 
+    $("#vasarlo").change(function () {
+        if ($("#calendar").val() != "") {
+            $("#calendar").trigger("change");
+
+
+
+
+        }
+        if($("#vasarlo").val()==0){
+            $("#calendar").val("");
+            $("#accordion").hide();
+            $("input[name='mentes']").hide();
+        }else{
+            var vasarlo_id=$("#vasarlo").val();
+
+            $.ajax({
+                type: "POST",
+                url: "includes/datum_rendeles_jelol.php",
+                data: {vasarlo_id: vasarlo_id},
+                datatype: "json",
+                success: function (valasz) {
+                    var valasztomb =  JSON.parse(valasz);
+
+                    var eventDates = {};
+                    for(i=0; i<valasztomb.length;i++){
+                        var vagottdatum = valasztomb[i].split("-");
+                        var datum = vagottdatum[1] + "/" + vagottdatum[2] + "/" + vagottdatum[0];
+                        console.log(datum);
+                        eventDates[new Date(datum)] =new Date(datum);
+                    }
+                    $(".container").html("<input type='text' id='calendar'>");
+                    jQuery('#calendar').datepicker({
+                        beforeShowDay: function (date) {
+                            var highlight = eventDates[date];
+                            if (highlight) {
+                                return [true, "event", "highlight"];
+                            } else {
+                                return [true, '', ''];
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    });
 
     $(".minusz").click(function () {
         var db = $(this).parent().find(".db");
@@ -96,68 +147,224 @@ require_once("functions.php");
     $.fn.exists = function () {
         return this.length !== 0;
     }
-    $("#datum").change(function () {
-        var datum = $("#datum").val();
-        var mainap = Date.today();
-        var data = {datum: datum};
-        if ($("#vasarlo").exists()) {
-            data['vasarlo_id'] = $("#vasarlo").val();
-        }
+//    $("#datum").change(function () {
+//        var datum = $("#datum").val();
+//        var mainap = Date.today();
+//        var data = {datum: datum};
+//        $(".db").val(0);
+//        if ($("#vasarlo").exists()) {
+//            data['vasarlo_id'] = $("#vasarlo").val();
+//        }
+//
+//        if (Date.compare(Date.parse(datum), mainap) == 0) {
+//            alert("A mai napra nem lehet rendelni");
+//
+//            $("#datum").val("");
+//        } else {
+//            if (Date.compare(Date.parse(datum), mainap) == 1) {
+//                $("#accordion").show();
+//                $("input[name='mentes']").show();
+//
+//                $.ajax({
+//                    type: "POST",
+//                    data: data,
+//                    url: "includes/datum_rendeles_ellenoriz.php",
+//
+//
+//                    success: function (valasz) {
+//                        if (!valasz) {
+//                            console.log("nincs valasz");
+//                        } else if (valasz == "[]") {
+//                            console.log("üres a nap");
+//                            $(".db").val(0);
+//                        } else {
+//
+//                            if (confirm("Erre a napra már van rendelésed. Szeretnéd módosítani?")) {
+//                                console.log("szeretne");
+//
+//                                var valasztomb = JSON.parse(valasz);
+////                            console.log(valasztomb);
+//
+//                                for (var kulcs in valasztomb) {
+////                                console.log(kulcs + " " + valasztomb[kulcs]);
+//                                    $("#termek_" + kulcs).val(valasztomb[kulcs]);
+//
+//                                }
+//                            } else {
+//                                $("#datum").val("");
+//                                $("#accordion").hide();
+//                                $("input[name='mentes']").hide();
+//
+//                            }
+//                        }
+//                    }
+//                });
+//
+//            } else {
+//                if (Date.compare(Date.parse(datum), mainap) == -1) {
+//                    alert("Rendelni csak későbbi időpontra lehet");
+//                    $("#datum").val("");
+//                }
+//            }
+//        }
+////        console.log(mainap);
+////        console.log(Date.parse(datum));
+//    });
 
-        if (Date.compare(Date.parse(datum), mainap) == 0) {
-            alert("A mai napra nem lehet rendelni");
 
-            $("#datum").val("");
-        } else {
-            if (Date.compare(Date.parse(datum), mainap) == 1) {
-                $("#accordion").show();
-                $("input[name='mentes']").show();
+    $(document).on("change","#calendar",function(){
 
-                $.ajax({
-                    type: "POST",
-                    data: data,
-                    url: "includes/datum_rendeles_ellenoriz.php",
+        if($("#vasarlo").val()== 0 || $("#calendar").val()== ""){
+            $("accordion").hide();
+            $("input[name='mentes']").hide();
+        }else {
+            var vagottdatum = $("#calendar").val().split('/');
+
+            var datum = vagottdatum[2] + "-" + vagottdatum[0] + "-" + vagottdatum[1];
+
+            console.log(datum + "dd");
 
 
-                    success: function (valasz) {
-                        if (!valasz) {
-                            console.log("nincs valasz");
-                        } else {
-                            if (confirm("Erre a napra már van rendelésed. Szeretnéd módosítani?")) {
-                                console.log("szeretne");
 
-                                var valasztomb = JSON.parse(valasz);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            var mainap = Date.today();
+            var data = {datum: datum};
+            $(".db").val(0);
+            if ($("#vasarlo").exists()) {
+                data['vasarlo_id'] = $("#vasarlo").val();
+            }
+
+            if (Date.compare(Date.parse(datum), mainap) == 0) {
+                alert("A mai napra nem lehet rendelni");
+
+                $("#calendar").val("");
+            } else {
+                if (Date.compare(Date.parse(datum), mainap) == 1) {
+                    $("#accordion").show();
+                    $("input[name='mentes']").show();
+
+                    $.ajax({
+                        type: "POST",
+                        data: data,
+                        url: "includes/datum_rendeles_ellenoriz.php",
+
+
+                        success: function (valasz) {
+                            if (!valasz) {
+                                console.log("nincs valasz");
+                            } else if (valasz == "[]") {
+                                console.log("üres a nap");
+                                $(".db").val(0);
+                            } else {
+
+                                if (confirm("Erre a napra már van rendelésed. Szeretnéd módosítani?")) {
+                                    console.log("szeretne");
+
+                                    var valasztomb = JSON.parse(valasz);
 //                            console.log(valasztomb);
 
-                                for (var kulcs in valasztomb) {
+                                    for (var kulcs in valasztomb) {
 //                                console.log(kulcs + " " + valasztomb[kulcs]);
-                                    $("#termek_" + kulcs).val(valasztomb[kulcs]);
+                                        $("#termek_" + kulcs).val(valasztomb[kulcs]);
+
+                                    }
+                                } else {
+                                    $("#calendar").val("");
+                                    $("#accordion").hide();
+                                    $("input[name='mentes']").hide();
 
                                 }
-                            } else {
-                                $("#datum").val("");
-                                $("#accordion").hide();
-                                $("input[name='mentes']").hide();
-
                             }
                         }
-                    }
-                });
+                    });
 
-            } else {
-                if (Date.compare(Date.parse(datum), mainap) == -1) {
-                    alert("Rendelni csak későbbi időpontra lehet");
-                    $("#datum").val("");
+                } else {
+                    if (Date.compare(Date.parse(datum), mainap) == -1) {
+                        alert("Rendelni csak későbbi időpontra lehet");
+                        $("#calendar").val("");
+                    }
                 }
             }
+
+
         }
-//        console.log(mainap);
-//        console.log(Date.parse(datum));
+
     });
+
 
     $(document).ready(function () {
         $("#accordion").hide();
         $("input[name='mentes']").hide();
-    });
+//        $('[class^=ui]').removeClass("ui-accordion-header ui-state-default ui-accordion-header-active ui-state-active ui-corner-top ui-accordion-icons ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active ui-widget ui-accordion ui-widget ")
 
+        if(!$("#vasarlo").exists()){
+            $.ajax({
+                type: "POST",
+                url: "includes/datum_rendeles_jelol.php",
+                data: {},
+                datatype: "json",
+                success: function (valasz) {
+                    var valasztomb =  JSON.parse(valasz);
+
+                    var eventDates = {};
+                    for(i=0; i<valasztomb.length;i++){
+                        var vagottdatum = valasztomb[i].split("-");
+                        var datum = vagottdatum[1] + "/" + vagottdatum[2] + "/" + vagottdatum[0];
+                        console.log(datum);
+                        eventDates[new Date(datum)] =new Date(datum);
+                    }
+                    $(".container").html("<input type='text' id='calendar'>");
+                    jQuery('#calendar').datepicker({
+                        beforeShowDay: function (date) {
+                            var highlight = eventDates[date];
+                            if (highlight) {
+                                return [true, "event", "highlight"];
+                            } else {
+                                return [true, '', ''];
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        var eventDates = {};
+        jQuery('#calendar').datepicker({
+            beforeShowDay: function (date) {
+                var highlight = eventDates[date];
+                if (highlight) {
+                    return [true, "event", "highlight"];
+                } else {
+                    return [true, '', ''];
+                }
+            }
+        });
+
+
+
+
+
+    });
+    //    $(function() {
+    //        $( "#datum" ).datepicker();
+    //    });
 </script>

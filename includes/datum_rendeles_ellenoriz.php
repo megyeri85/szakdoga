@@ -26,6 +26,8 @@ if (isset($_POST["datum"])) {
         }
         echo json_encode($rendelesek);
 
+    }else{
+        echo json_encode(array());
     }
 
 

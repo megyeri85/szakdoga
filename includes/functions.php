@@ -57,6 +57,18 @@ function jog_ellenorzes($jog)
     }
     return false;
 }
+function szam_ellenorzes($szam){
+
+    return preg_match('/^[0-9]+$/', $szam);
+}
+
+function suly_ellenorzes($suly){
+    if (preg_match('/^[1-9]+[0-9]*$/', $suly) || preg_match('/^\d+[.]\d{1,2}$/', $suly)){
+        return true;
+    }else{
+        return false;
+    }
+}
 
 function vasarlo_lista(){
     require("connect.inc.php");

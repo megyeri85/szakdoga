@@ -1,5 +1,5 @@
 <?php
-echo"a";
+
 ?>
 <div class="urlap">
     <form>

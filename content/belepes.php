@@ -21,7 +21,9 @@ if ($_SESSION['sikeres_belepes'] == false) {
     echo "<p>Felhasználói név</p>";
     echo "<input type='text' name='nev' class='mezo'>";
     echo "<p>Jelszó</p>";
-    echo "<input type='text' name='jelszo' class='mezo'>";
+    echo "<input type='text' name='jelszo' class='mezo'><br>";
+    echo '<div style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;" class="g-recaptcha" data-sitekey="6LeGjRETAAAAAEAES58FbdWpbmreZUFic8x5QieV"></div>';
+
     echo "<input type='submit' name='submit' value='Belépés' id='gomb_belepes'>";
     echo "</form>";
 
@@ -56,5 +58,7 @@ if ($_SESSION['sikeres_belepes'] == false) {
     }
     echo "<form action='' method='post'>";
     echo "<input type='submit' name='kilepes' value='Kilépés' id='gomb_kilepes'>";
+    echo "<a href='#' style='margin-left: 58px; color: #eb6a0b' onclick=\"load_oldal('jelszo_valtoztatas',event)\">Jelszó változtatás</a>";
+
 }
 ?>

@@ -1,5 +1,5 @@
 <?php
-echo "sdfgdfgdf";
+
 include("../includes/connect.inc.php");
 ?>
 <div class="urlap">

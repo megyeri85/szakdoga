@@ -28,7 +28,10 @@ echo "<input type='button' id='megse' value='MÉGSE'>";
     });
 
     $("#submit").click(function () {
-        var datum = $("#datum").val();
+//        var datum = $("#calendar").val();
+        var vagottdatum = $("#calendar").val().split('/');
+
+        var datum = vagottdatum[2] + "-" + vagottdatum[0] + "-" + vagottdatum[1];
         var data = {datum: datum};
         if ($("#vasarlo").exists()) {
             data['vasarlo_id'] = $("#vasarlo").val();

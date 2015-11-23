@@ -7,7 +7,7 @@ include("../includes/connect.inc.php");
 <div class="urlap">
     <form>
         <fieldset>
-            <legend>Felhasználó Törlése</legend>
+            <legend>Felhasználó új jelszavának kiküldése</legend>
             </br>
             <label class="mezofelirat">Cég név: </label>
             <select id="vasarlo">
@@ -39,7 +39,7 @@ include("../includes/connect.inc.php");
             </select></br></br>
 
 
-            <input type="button" name="torles" class="mentes" value="Felhasználó törlése">
+            <input type="button" name="jelszo_kuld" class="mentes" value="Jelszó generálás és küldés">
 
         </fieldset>
     </form>
@@ -98,29 +98,29 @@ include("../includes/connect.inc.php");
         });
     }
 
-    function felhasznalo_torles() {
-//        console.log("torles");
+    function felhasznalo_jelszokuld() {
+
         var nev = $("#felhasznalo option:selected").text();
 
         if ($("#felhasznalo").val() == 0) {
             alert("Válassz egy felhasználótt!");
         } else {
             var id = $("#felhasznalo").val();
-            var nev = $("#felhasznalo option:selected").text();
-            if (confirm("Biztos hogy törölni akarod ezt a felhasználót?")) {
+
+
 
 
                 $.ajax({
                     type: "POST",
-                    url: "includes/felhasznalo_torol.php",
+                    url: "includes/felhasznalo_jelszo_kuld.php",
                     data: {felhasznaloid: id},
                     success: function (valasz) {
 
                         alert(valasz);
-                        location.reload();
+
                     }
                 });
-            }
+
         }
     }
 
@@ -130,6 +130,6 @@ include("../includes/connect.inc.php");
 
         $("#vasarlo").change(vasarlo_valtozas);
         $("#felhasznalo").change(felhasznalo_valtozas);
-        $("input[name='torles']").click(felhasznalo_torles);
+        $("input[name='jelszo_kuld']").click(felhasznalo_jelszokuld);
     });
 </script>
