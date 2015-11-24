@@ -117,6 +117,8 @@ include("../includes/connect.inc.php");
                     success: function (valasz) {
 
                         alert(valasz);
+                        $("#vasarlo").val(0);
+                        $("#felhasznalo").val(0);
 
                     }
                 });

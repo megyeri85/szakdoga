@@ -21,11 +21,15 @@
         <li class='fomenu'><a href='#' onclick="load_oldal('kapcsolat',event)">Kapcsolat</a></li>
 
         <?php
-        if(jog_ellenorzes(DISZPECSER) || jog_ellenorzes(ADMIN) ){
+        if(jog_ellenorzes(DISZPECSER) || jog_ellenorzes(ADMIN) || jog_ellenorzes(VASARLO)){
 
         ?>
             <li class='fomenu'><a href='#' onclick="load_oldal('rendeles',event)">Rendelés</a></li>
+        <?php } ?>
+        <?php
+        if(jog_ellenorzes(DISZPECSER) || jog_ellenorzes(ADMIN) ){
 
+            ?>
             <li class='fomenu'><a href='#'>Termelés</a>
             <ul>
                 <li><a href='#' onclick="load_oldal('szallitolevelek',event)">Szállítólevelek</a></li>

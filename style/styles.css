@@ -216,12 +216,12 @@
   #cssmenu ul ul li a {
     padding: 20px 20px 20px 30px;
     font-size: 12px;
-    color: #ff38d9;
+    color: #dc6709;
     background: none;
   }
   #cssmenu ul ul li:hover > a,
   #cssmenu ul ul li a:hover {
-    color: #ff38d9;
+    color: #dc6709;
   }
   #cssmenu ul ul ul li a {
     padding-left: 40px;
@@ -244,7 +244,7 @@
   #cssmenu #menu-button {
     display: block;
     padding: 20px;
-    color: #ff38d9;
+    color: #dc6709;
     cursor: pointer;
     font-size: 12px;
     text-transform: uppercase;
@@ -257,7 +257,7 @@
     display: block;
     width: 15px;
     height: 2px;
-    background: #ff38d9;
+    background: #dc6709;
   }
   #cssmenu #menu-button::before {
     content: '';

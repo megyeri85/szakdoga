@@ -22,7 +22,7 @@ if (isset($_POST['datum'])) {
         while ($sor = $eredmeny->fetch_array(MYSQLI_ASSOC)) {
 //            print_r($sor);
             if($kategid != $sor['kategoria_id']){
-                echo "<tr><td colspan='3' style='text-align: center; text-transform: uppercase'; >".$sor['kategoria_nev']."</td></tr>";
+                echo "<tr><th colspan='3' style='text-align: center; text-transform: uppercase'; >".$sor['kategoria_nev']."</th></tr>";
                 $kategid = $sor['kategoria_id'];
             }else{
 

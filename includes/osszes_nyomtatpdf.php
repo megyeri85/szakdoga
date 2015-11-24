@@ -18,8 +18,8 @@ if (isset($_POST["datum"])) {
                 $html .= "</table><br><br><br><br><br><br><br><p>Átevette: ______________</p><pagebreak />";
             }
             $felhasznalo = $sor["ceg_nev"];
-            $html .= "<h1 class='focim'>Szállítólevél</h1><h2>Megrendelő: $felhasznalo</h2><h2>Dátum: $sqldatum</h2><h2>Cím: {$sor['ceg_cim']}</h2>";
-            $html .= "<table>";
+            $html .= "<h1 class='focim'>Szállítólevél</h1><h5>Megrendelő: $felhasznalo</h5><h5>Dátum: $sqldatum</h5><h5>Cím: {$sor['ceg_cim']}</h5>";
+            $html .= "<table><tr><th>Termék név</th><th>Termék súly</th><th>Mennyiség</th></tr>";
 
         } else {
             $html .= "<tr>";
@@ -35,18 +35,19 @@ if (isset($_POST["datum"])) {
     <style>
 table {
     border-collapse: collapse;
+    margin: auto;
 }
 
 table, th, td {
     border: 1px solid black;
 }
 .focim{
-color: red;
+text-align: center;
 }
 
 </style>
     ";
-    $mpdf->WriteHTML($css . $html."</table><br><br><br><br><br><br><br><p>Átevette: ______________</p>");
+    $mpdf->WriteHTML($css . $html."</table><br><br><br><br><br><br><br><p>Átevette: ___________________________</p>");
 
     $mpdf->Output();
     exit;

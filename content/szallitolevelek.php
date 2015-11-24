@@ -8,9 +8,9 @@ include("../includes/connect.inc.php");
     <input type="text" id="calendar">
 </div>
 
-<input type="button" id="nyomtatas" class="mentes" value="Nyomtatás">
 
-<input type="button" id="osszes_nyomtatas" class="mentes" value="összes Nyomtatás">
+
+<input type="button" id="osszes_nyomtatas" class="mentes" value="Szállítólevelek Nyomtatása">
 
 <form id="invisible_form" action="includes/osszes_nyomtatpdf.php" method="post" target="_blank">
     <input id="new_window_parameter_1" name="datum" type="hidden" value="default">
@@ -19,7 +19,7 @@ include("../includes/connect.inc.php");
 <script>
     $(document).ready(function () {
         $("#osszes_nyomtatas").click(osszes_nyomtatas);
-        $("#nyomtatas").hide();
+        $("#osszes_nyomtatas").hide();
         var eventDates = {};
 
 
@@ -66,7 +66,7 @@ include("../includes/connect.inc.php");
                 console.log(valasz);
             }
         });
-        $("#nyomtatas").show();
+        $("#osszes_nyomtatas").show();
 
 
     });

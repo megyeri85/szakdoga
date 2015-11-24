@@ -15,6 +15,7 @@ include("../includes/connect.inc.php");
 <input type="button" id="nyomtatas"  class="mentes" value="Nyomtatás">
 <form id="invisible_form" action="content/pdf.php" method="post" target="_blank">
     <input id="new_window_parameter_1" name="txt" type="hidden" value="default">
+    <input id="new_window_parameter_2" name="datum" type="hidden" value="default">
 </form>
 
 <script>
@@ -71,8 +72,10 @@ include("../includes/connect.inc.php");
     });
 
     $("#nyomtatas").click(function (){
+        var datum = ($("#calendar").val());
 
         $('#new_window_parameter_1').val($("#napi_gyartas_tablazat").html());
+        $('#new_window_parameter_2').val(datum);
         $('#invisible_form').submit();
     });
 

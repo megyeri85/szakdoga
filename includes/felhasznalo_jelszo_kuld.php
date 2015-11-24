@@ -11,12 +11,12 @@ if(isset($_POST["felhasznaloid"])){
     $id = $conn->real_escape_string($_POST["felhasznaloid"]);
     $sql="SELECT `ceg_email`,`ceg_nev`,`nev` FROM `vasarlok` inner join `felhasznalok` on `vasarlo_id`=`fk_vasarlo_id` WHERE `felhasznalo_id`='$id'";
     $eredmeny=$conn->query($sql)->fetch_array(MYSQLI_ASSOC);
-    print_r($eredmeny);
-    $ujjelszo = generateRandomString(5);
+//    print_r($eredmeny);
+    $ujjelszo = generateRandomString(3);
     echo $ujjelszo;
-    $upd="UPDATE `felhasznalok` SET `jelszo`=sha1('aaa') WHERE `felhasznalo_id`='$id'";
+    $upd="UPDATE `felhasznalok` SET `jelszo`=sha1('$ujjelszo') WHERE `felhasznalo_id`='$id'";
     if($conn->query($upd)){
-        echo"A módosítás sikeres volt!";
+        echo"A ".$eredmeny["ceg_nev"]."nevű céghez tartozo ".$eredmeny["nev"]." felhasználó új jelszava a : ".$ujjelszo." .Melyet kiküldtünk a ".$eredmeny["ceg_email"]." címre";
     }else{
         echo "Mysql hiba!";
     }
