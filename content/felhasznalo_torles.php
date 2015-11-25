@@ -79,7 +79,7 @@ include("../includes/connect.inc.php");
 //                console.log(valasztomb);
 
                 if ($("#vasarlo").val() == 0) {
-                    console.log("vasarlo 0");
+//                    console.log("vasarlo 0");
                     $("#felhasznalo option").show();
                     $("#felhasznalo").val(0);
                 } else {

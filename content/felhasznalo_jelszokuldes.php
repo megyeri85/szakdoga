@@ -68,7 +68,7 @@ include("../includes/connect.inc.php");
 
     function vasarlo_valtozas() {
         var id = $("#vasarlo").val();
-        console.log(id);
+//        console.log(id);
         $.ajax({
             type: "POST",
             url: "includes/felhasznalo_torles_valtozas.php",
@@ -79,7 +79,7 @@ include("../includes/connect.inc.php");
 //                console.log(valasztomb);
 
                 if ($("#vasarlo").val() == 0) {
-                    console.log("vasarlo 0");
+//                    console.log("vasarlo 0");
                     $("#felhasznalo option").show();
                     $("#felhasznalo").val(0);
                 } else {

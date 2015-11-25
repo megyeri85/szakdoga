@@ -9,24 +9,23 @@ if (isset($_POST["datum"])) {
     $vasasrlo_id = isset($_POST["vasarlo_id"]) ? $_POST["vasarlo_id"] : $conn->query($sql)->fetch_assoc()["vasarlo_id"];
     $rendelesek = array();
 
-//    echo $_SESSION["felhasznalo_id"];
+
     $sql = "SELECT * FROM `rendeles` WHERE `fk_vasarlo_id`='$vasasrlo_id' and `datum`='$datum'";
     $eredmeny = $conn->query($sql);
     $sorokszama = mysqli_num_rows($eredmeny);
     if ($sorokszama > 0) {
         $eredmeny = $eredmeny->fetch_array();
-//        print_r($eredmeny);
+
         $sql2 = sprintf("SELECT * FROM `rendelt_termek` WHERE `fk_rendeles_id`= %d", $eredmeny["rendeles_id"]);
-         $eredmeny2= $conn->query($sql2);
+        $eredmeny2 = $conn->query($sql2);
         while ($sor = $eredmeny2->fetch_array()) {
-//            echo $sor["fk_termek_id"];
-//            echo $sor["db"];
+
             $rendelesek[$sor['fk_termek_id']] = $sor['db'];
-            $_SESSION["kosar"]["termek_".$sor['fk_termek_id']] = $sor['db'];
+            $_SESSION["kosar"]["termek_" . $sor['fk_termek_id']] = $sor['db'];
         }
         echo json_encode($rendelesek);
 
-    }else{
+    } else {
         echo json_encode(array());
     }
 

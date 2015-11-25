@@ -385,5 +385,36 @@ table#osszegzes{
 
 }
 
+#footer{
+    text-align: center;
+    font-family: monospace;
+    color: wheat;
+}
+
+.szoveg{
+    padding-top: 40px;
+    margin-left: 50px;
+    margin-right: 50px;
+    max-height: 800px;
+    overflow: auto;
+
+}
+
+.szoveg > h1 {
+    color: #eb6a0b;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.szoveg > p{
+    color: #ECD0A8;
+}
 
 
+#vlightbox1{
+    padding-top: 60px;
+    /* margin-left: 22px; */
+    /* padding-right: 3px; */
+    max-width: 677px;
+    margin: auto;
+}

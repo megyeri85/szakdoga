@@ -21,6 +21,9 @@ if (isset($_POST["felhasznalo_nev"]) && isset($_POST["jog"]) && isset($_POST["em
         $ins = "INSERT INTO `felhasznalok`(`fk_vasarlo_id`, `nev`, `jelszo`, `jog_szint`) VALUES ('0','$felhasznalo_nev', sha1('$felhasznalo_nev'),'$jog')";
         if ($conn->query($ins)) {
             echo "Az új admin létrehozva ".$email;
+            $message = "Az új felhasznalo létrehozva: ".$felhasznalo_nev." névvel és ".$felhasznalo_nev." jelszóval";
+
+            mail($email, 'Admin létrehozva', $message);
         } else {
             echo "mysql hiba";
         }

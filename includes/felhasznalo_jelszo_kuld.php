@@ -13,11 +13,14 @@ if(isset($_POST["felhasznaloid"])){
     $eredmeny=$conn->query($sql)->fetch_array(MYSQLI_ASSOC);
 //    print_r($eredmeny);
     $ujjelszo = generateRandomString(3);
-    echo $ujjelszo;
+//    echo $ujjelszo;
     $upd="UPDATE `felhasznalok` SET `jelszo`=sha1('$ujjelszo') WHERE `felhasznalo_id`='$id'";
     if($conn->query($upd)){
         echo"A ".$eredmeny["ceg_nev"]."nevű céghez tartozo ".$eredmeny["nev"]." felhasználó új jelszava a : ".$ujjelszo." .Melyet kiküldtünk a ".$eredmeny["ceg_email"]." címre";
-    }else{
+        $message = $eredmeny["ceg_nev"]."nevű céghez tartozo ".$eredmeny["nev"]." felhasználó új jelszava a : ".$ujjelszo;
+
+        mail($eredmeny["ceg_email"], 'Felhasználó létrehozva', $message);
+        }else{
         echo "Mysql hiba!";
     }
 

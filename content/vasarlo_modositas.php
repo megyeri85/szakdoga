@@ -83,38 +83,7 @@ include("../includes/connect.inc.php");
         var adoszam2 = $("input[name='adoszam2']").val();
         var adoszam3 = $("input[name='adoszam3']").val();
         if (id==0)alert("Válaasz ki egy vásárlót");else {
-//        console.log(id,cim,email,telefon,cegjegyzekszam1,cegjegyzekszam2,cegjegyzekszam3,adoszam1,adoszam2,adoszam3);
 
-
-//        if(uresmezo_ellenoriz($("input[name='cim']"))){
-//            console.log("nem ures mezo");
-//            $("input[name='cim']").next("span").hide();
-//        }else{
-//            console.log("ures cim");
-//            $("input[name='cim']").next("span").show();
-//        }
-
-//        if(telefonmezo_ellenoriz($("input[name='telefonszam']"))){
-//            console.log("joszam");
-//            $("input[name='telefonszam']").next("span").hide();
-//        }else{
-//            console.log("rosszam");
-//            $("input[name='telefonszam']").next("span").show();
-//        }
-
-//        if(cegjegyzek_ellenoriz($("input[name='cegjegyzekszam1']"), $("input[name='cegjegyzekszam2']"), $("input[name='cegjegyzekszam3']"))){
-//            console.log("jo cj");
-//            $("input[name='cegjegyzekszam3']").next("span").hide();
-//        }else{
-//            console.log("rossz cj");
-//            $("input[name='cegjegyzekszam3']").next("span").show();
-//        }
-
-//        if(adoszam_ellenoriz($("input[name='adoszam1']"), $("input[name='adoszam2']"), $("input[name='adoszam3']"))){
-//            $("input[name='adoszam3']").next("span").hide();
-//        }else{
-//            $("input[name='adoszam3']").next("span").show();
-//        }
             uresmezo_ellenoriz($("input[name='cim']"));
             telefonmezo_ellenoriz($("input[name='telefonszam']"));
             cegjegyzek_ellenoriz($("input[name='cegjegyzekszam1']"), $("input[name='cegjegyzekszam2']"), $("input[name='cegjegyzekszam3']"));
@@ -145,18 +114,8 @@ include("../includes/connect.inc.php");
                         adoszam2: adoszam2,
                         adoszam3: adoszam3
                     },
-                    // datatype: 'json',
                     success: function (valasz) {
-//                    var valasztomb2 = JSON.parse(valasz);
-//                    $(".red").removeClass("red");
-//                    for (i = 0; i < valasztomb2.length; i++) {
-//                        $("input[name='" + valasztomb2[i] + "']").addClass("red");
-//                    }
-//                    if (valasztomb2.length == 0) {
-//                        alert("Módosítva!");
-//                    } else {
-//                        alert(valasz);
-//                    }
+
                         alert(valasz);
                     }
                 });

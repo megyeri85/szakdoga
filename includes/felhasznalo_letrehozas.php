@@ -30,9 +30,12 @@ if (isset($_POST['id']) && isset($_POST["felhasznalo_nev"])) {
 
 
             $ujfelhasznalo = "INSERT INTO `felhasznalok`(`fk_vasarlo_id`, `nev`, `jelszo`, `jog_szint`)
-                        VALUES ('$id','$felhasznalo_nev',sha1('$nevjelszo'),'1')";
+                        VALUES ('$id','$felhasznalo_nev',sha1('$felhasznalo_nev'),'1')";
             if ($conn->query($ujfelhasznalo)) {
-                echo "Az új felhasznalo létrehozva: ".$felhasznalo_nev." névvel és ".$nevjelszo." jelszóval";
+                echo"Az új felhasznalo létrehozva: ".$felhasznalo_nev." névvel és ".$nevjelszo." jelszóval";
+                $message = "Az új felhasznalo létrehozva: " . $felhasznalo_nev . " névvel és " . $nevjelszo . " jelszóval";
+
+                mail($emailcim, 'Felhasználó létrehozva', $message);
             } else {
                 echo "mysql hiba";
             }

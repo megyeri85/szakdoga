@@ -1,19 +1,14 @@
 <?php
-include("/../includes/connect.inc.php");
+include("connect.inc.php");
 
 
+if (isset($_POST["kilepes"])) {
+    session_destroy();
+    $_SESSION = array();
 
-
-
-
-
-    if (isset($_POST["kilepes"])) {
-        session_destroy();
-        $_SESSION = array();
-
-    }
-if(isset($_SESSION["sikeres_belepes"]) && $_SESSION["sikeres_belepes"]==true){
-}else{
+}
+if (isset($_SESSION["sikeres_belepes"]) && $_SESSION["sikeres_belepes"] == true) {
+} else {
 
     if (!isset($_SESSION['belepes_probalkozas'])) {
         $_SESSION['belepes_probalkozas'] = 0;
@@ -51,11 +46,9 @@ if(isset($_SESSION["sikeres_belepes"]) && $_SESSION["sikeres_belepes"]==true){
             $_SESSION['sikeres_belepes'] = true;
             $_SESSION['felhasznalo_id'] = $row['felhasznalo_id'];
             $_SESSION['jog'] = $row['jog_szint'];
-            //echo $_SESSION['belepett_felhasznalo']."névvel be vagy jelentkezve";
         } else {
             $_SESSION['sikeres_belepes'] = false;
             $_SESSION['belepes_probalkozas']++;
-            //echo'Helytelen jelszó vagy felhasználói név';
         }
 
     }

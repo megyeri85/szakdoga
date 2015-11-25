@@ -60,7 +60,7 @@ include("../includes/connect.inc.php");
         $("input[name='termek_suly']").val("");
         $("input[name='termek_ar']").val("");
         $("#termek_leiras").val("");
-        console.log(kateg);
+//        console.log(kateg);
         if(kateg==0){
             $("#termekek option").show();
         }else {

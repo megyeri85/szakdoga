@@ -47,7 +47,7 @@
                             $("input[name='uj_jelszo_ujra']").next("span").show();
                         } else {
                             $("input[name='uj_jelszo_ujra']").next("span").hide();
-                            console.log("minden jó");
+//                            console.log("minden jó");
 
                             var uj_jelszo =$("input[name='uj_jelszo']").val();
                             var uj_jelszo2 = $("input[name='uj_jelszo_ujra']").val();

@@ -45,6 +45,7 @@
                             alert(valasz);
                             $("#jog_valasztas").val(0);
                             $("input[name='felhasznalo_nev']").val("");
+                            $("input[name='email']").val("");
                         }
                     });
 

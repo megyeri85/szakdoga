@@ -90,7 +90,7 @@ require_once("functions.php");
                     for(i=0; i<valasztomb.length;i++){
                         var vagottdatum = valasztomb[i].split("-");
                         var datum = vagottdatum[1] + "/" + vagottdatum[2] + "/" + vagottdatum[0];
-                        console.log(datum);
+//                        console.log(datum);
                         eventDates[new Date(datum)] =new Date(datum);
                     }
                     $(".container").html("<input type='text' id='calendar'>");
@@ -129,7 +129,7 @@ require_once("functions.php");
 
     $(".db").change(function () {
         kosar_frissites($(this).attr('id'), $(this).val());
-        console.log($(this).attr('id') + "    " + $(this).val());
+//        console.log($(this).attr('id') + "    " + $(this).val());
     });
 
     $("#ellenoriz").click(function () {
@@ -222,7 +222,7 @@ require_once("functions.php");
 
             var datum = vagottdatum[2] + "-" + vagottdatum[0] + "-" + vagottdatum[1];
 
-            console.log(datum + "dd");
+//            console.log(datum + "dd");
 
 
 
@@ -270,14 +270,14 @@ require_once("functions.php");
 
                         success: function (valasz) {
                             if (!valasz) {
-                                console.log("nincs valasz");
+//                                console.log("nincs valasz");
                             } else if (valasz == "[]") {
-                                console.log("üres a nap");
+//                                console.log("üres a nap");
                                 $(".db").val(0);
                             } else {
 
                                 if (confirm("Erre a napra már van rendelésed. Szeretnéd módosítani?")) {
-                                    console.log("szeretne");
+//                                    console.log("szeretne");
 
                                     var valasztomb = JSON.parse(valasz);
 //                            console.log(valasztomb);
@@ -329,7 +329,7 @@ require_once("functions.php");
                     for(i=0; i<valasztomb.length;i++){
                         var vagottdatum = valasztomb[i].split("-");
                         var datum = vagottdatum[1] + "/" + vagottdatum[2] + "/" + vagottdatum[0];
-                        console.log(datum);
+//                        console.log(datum);
                         eventDates[new Date(datum)] =new Date(datum);
                     }
                     $(".container").html("<input type='text' id='calendar'>");
