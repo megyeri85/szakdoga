@@ -1,6 +1,7 @@
 <?php
 
 if ($_SESSION['belepes_probalkozas'] >= 3) {
+    $_SESSION['belepes_probalkozas'] = 0;
     ?>
 
     <script>
@@ -8,7 +9,9 @@ if ($_SESSION['belepes_probalkozas'] >= 3) {
             alert("Túl sokszor próbálkoztál! \n Kérlek próbálkozz később!");
         }
         Hiba_tulsokbelepes();
+
         document.location.href = "http://www.google.hu";
+
     </script>
 
     <?php

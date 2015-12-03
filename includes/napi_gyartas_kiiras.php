@@ -1,7 +1,7 @@
 <?php
 include("functions.php");
 session_start();
-if (!jog_ellenorzes(ADMIN)) {
+if (!jog_ellenorzes(ADMIN) && !jog_ellenorzes(DISZPECSER)) {
     die("jogtalan hozzáférés!");
 }
 include("connect.inc.php");

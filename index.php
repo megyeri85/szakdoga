@@ -57,7 +57,9 @@ require_once("includes/functions.php");
             </div>
         </div>
         <div id="rightside">
-
+            <?php
+            include("content/kezdolap.php")
+            ?>
         </div>
     </div>
     <div id="footer">BécsiPékség Készítte: Megyeri László 2015</div>

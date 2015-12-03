@@ -5,7 +5,7 @@ include("../includes/connect.inc.php");
 <div class="container" style="display inherit">
 
 
-    <input type="text" id="calendar">
+    <input type="text" id="calendar3">
 </div>
 
 
@@ -37,7 +37,7 @@ include("../includes/connect.inc.php");
                 }
 
 
-                jQuery('#calendar').datepicker({
+                jQuery('#calendar3').datepicker({
                     beforeShowDay: function (date) {
                         var highlight = eventDates[date];
                         if (highlight) {
@@ -53,9 +53,9 @@ include("../includes/connect.inc.php");
 
     });
 
-    $("#calendar").change(function () {
-        var datum = ($("#calendar").val());
-        console.log(datum);
+    $("#calendar3").change(function () {
+        var datum = ($("#calendar3").val());
+//        console.log(datum);
         $.ajax({
             type: "POST",
             url: "includes/szallitolevel_vasarlok.php",
@@ -72,7 +72,7 @@ include("../includes/connect.inc.php");
     });
 
     function osszes_nyomtatas(){
-        var datum = ($("#calendar").val());
+        var datum = ($("#calendar3").val());
 
         $('#new_window_parameter_1').val(datum);
         $('#invisible_form').submit();

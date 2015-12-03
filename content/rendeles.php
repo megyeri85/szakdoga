@@ -35,7 +35,7 @@ require_once("functions.php");
             $eredmeny2 = $conn->query($sql);
             echo "<table>";
             while ($termek = $eredmeny2->fetch_array(MYSQLI_ASSOC)) {
-                printf("<tr><td style='width: 300px'>%s</td><td style='width: 100px' >%s Kg</td><td style='width: 120px'>%s Ft</td><td><input class='minusz' type='button' value='-'><input style='width: 32px' value=%d  id='termek_%s' class='db' ><input class='plusz' type='button' value='+'></td></tr>",
+                printf("<tr><td style='width: 300px'>%s</td><td style='width: 100px' >%s Kg</td><td style='width: 120px'>%s Ft</td><td><input class='minusz' type='button' value='-'><input style='width: 32px' value=%d  id='termek_%s' class='db' onkeypress='return event.charCode >= 48 && event.charCode <= 57'><input class='plusz' type='button' value='+'></td></tr>",
                     $termek['termek_nev'], $termek['termek_suly'], $termek['termek_ar'], get_amount("termek_" . $termek['termek_id']), $termek['termek_id']);
             }
             echo "</table>";

@@ -19,7 +19,7 @@ if (isset($_POST['id']) && isset($_POST["felhasznalo_nev"])) {
         $id = $_POST['id'];
         $emailcim = $eredmeny['ceg_email'];
         $cegnev = $eredmeny['ceg_nev'];
-        $nevjelszo = generateRandomString(3);
+        $jelszo = generateRandomString(5);
         //Email küldés
         $sql2 = "SELECT * FROM `felhasznalok` WHERE `nev`='$felhasznalo_nev'";
         $van_e = $conn->query($sql2);
@@ -30,10 +30,10 @@ if (isset($_POST['id']) && isset($_POST["felhasznalo_nev"])) {
 
 
             $ujfelhasznalo = "INSERT INTO `felhasznalok`(`fk_vasarlo_id`, `nev`, `jelszo`, `jog_szint`)
-                        VALUES ('$id','$felhasznalo_nev',sha1('$felhasznalo_nev'),'1')";
+                        VALUES ('$id','$felhasznalo_nev',sha1('$jelszo'),'1')";
             if ($conn->query($ujfelhasznalo)) {
-                echo"Az új felhasznalo létrehozva: ".$felhasznalo_nev." névvel és ".$nevjelszo." jelszóval";
-                $message = "Az új felhasznalo létrehozva: " . $felhasznalo_nev . " névvel és " . $nevjelszo . " jelszóval";
+                echo"Az új felhasznalo létrehozva: ".$felhasznalo_nev." névvel és ".$jelszo." jelszóval";
+                $message = "Az új felhasznalo létrehozva: " . $felhasznalo_nev . " névvel és " . $jelszo . " jelszóval";
 
                 mail($emailcim, 'Felhasználó létrehozva', $message);
             } else {

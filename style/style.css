@@ -339,7 +339,7 @@ table#osszegzes{
 
 
 
-#calendar {
+#calendar, #calendar2, #calendar3 {
     margin: 40px auto 40px auto;
     display: inherit;
 }

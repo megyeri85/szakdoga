@@ -12,7 +12,7 @@ if(isset($_POST["felhasznaloid"])){
     $sql="SELECT `ceg_email`,`ceg_nev`,`nev` FROM `vasarlok` inner join `felhasznalok` on `vasarlo_id`=`fk_vasarlo_id` WHERE `felhasznalo_id`='$id'";
     $eredmeny=$conn->query($sql)->fetch_array(MYSQLI_ASSOC);
 //    print_r($eredmeny);
-    $ujjelszo = generateRandomString(3);
+    $ujjelszo = generateRandomString(5);
 //    echo $ujjelszo;
     $upd="UPDATE `felhasznalok` SET `jelszo`=sha1('$ujjelszo') WHERE `felhasznalo_id`='$id'";
     if($conn->query($upd)){

@@ -5,7 +5,7 @@ include("../includes/connect.inc.php");
 <div class="container" style="display inherit">
 
 
-    <input type="text" id="calendar">
+    <input type="text" id="calendar2">
 </div>
 
 <div id="napi_gyartas_tablazat">
@@ -38,7 +38,7 @@ include("../includes/connect.inc.php");
                 }
 
 
-                jQuery('#calendar').datepicker({
+                jQuery('#calendar2').datepicker({
                     beforeShowDay: function (date) {
                         var highlight = eventDates[date];
                         if (highlight) {
@@ -54,8 +54,8 @@ include("../includes/connect.inc.php");
 
     });
 
-    $("#calendar").change(function (){
-       var datum = ($("#calendar").val());
+    $("#calendar2").change(function (){
+       var datum = ($("#calendar2").val());
         $.ajax({
             type: "POST",
             url: "includes/napi_gyartas_kiiras.php",
@@ -72,7 +72,7 @@ include("../includes/connect.inc.php");
     });
 
     $("#nyomtatas").click(function (){
-        var datum = ($("#calendar").val());
+        var datum = ($("#calendar2").val());
 
         $('#new_window_parameter_1').val($("#napi_gyartas_tablazat").html());
         $('#new_window_parameter_2').val(datum);
