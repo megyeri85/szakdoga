@@ -76,7 +76,7 @@ include("../includes/connect.inc.php");
         var adoszam2 = $("input[name='adoszam2']").val();
         var adoszam3 = $("input[name='adoszam3']").val();
         console.log("törlés");
-        if (id == 0)alert("Válaasz ki egy vásárlót"); else {
+        if (id == 0)alert("Válassz ki egy vásárlót"); else {
             if (confirm("Biztos hogy törölni akarod ezt a vásárlót az összes adatával együtt?")) {
                 $.ajax({
                     type: "POST",
