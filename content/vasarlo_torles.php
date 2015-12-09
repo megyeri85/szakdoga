@@ -12,7 +12,7 @@ include("../includes/connect.inc.php");
                 <option value="0">Bármelyik</option>
 
                 <?php
-                $sql = "select * from vasarlok order by ceg_nev";
+                $sql = "select * from vasarlok where vasarlo_id>0 order by ceg_nev";
                 $vasarlok = $conn->query($sql);
                 while ($vasarlo = $vasarlok->fetch_array(MYSQLI_ASSOC)) {
                     echo "<option value=" . $vasarlo["vasarlo_id"] . ">" . $vasarlo["ceg_nev"] . "</option>";
@@ -98,6 +98,7 @@ include("../includes/connect.inc.php");
                         alert(valasz);
                         $("#vasarlo").val(0);
                         $("input[type='text']").val(null);
+                        location.reload();
 
                     }
                 });

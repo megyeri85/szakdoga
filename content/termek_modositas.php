@@ -136,6 +136,9 @@ include("../includes/connect.inc.php");
 
                     success: function (valasz) {
                         alert(valasz);
+                        $("#termek_kateg").val(0);
+                        $("#termek_kateg").trigger(kateg_valtozas());
+
 
                     }
                 });

@@ -121,6 +121,7 @@ include("../includes/connect.inc.php");
                    alert(valasz);
                     $("#termekek").val(0);
                     $("#termekek").trigger("change");
+                    location.reload();
                 }
             });
         }

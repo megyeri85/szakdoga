@@ -113,7 +113,7 @@ function kosar_frissites(id,db){
 
         },
         success: function (valasz) {
-            console.log(valasz);
+            //console.log(valasz);
         }
     });
 

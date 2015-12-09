@@ -12,7 +12,7 @@ include("../includes/connect.inc.php");
                 <option value="0">Bármelyik</option>
 
                 <?php
-                $sql = "select * from vasarlok order by ceg_nev";
+                $sql = "select * from vasarlok where vasarlo_id>0 order by ceg_nev";
                 $vasarlok = $conn->query($sql);
                 while ($vasarlo = $vasarlok->fetch_array(MYSQLI_ASSOC)) {
                     echo "<option value=" . $vasarlo["vasarlo_id"] . ">" . $vasarlo["ceg_nev"] . "</option>";
@@ -39,36 +39,58 @@ include("../includes/connect.inc.php");
 <script>
     function valtozas() {
         var id = $("#vasarlo").val();
+        if(id == 0 ){
+            $("input[name='cim']").val("");
+            $("input[name='emailcim']").val("");
+            $("input[name='telefonszam']").val("");
+            $("input[name='cegjegyzekszam1']").val("");
+            $("input[name='cegjegyzekszam2']").val("");
+            $("input[name='cegjegyzekszam3']").val("");
+            $("input[name='adoszam1']").val("");
+            $("input[name='adoszam2']").val("");
+            $("input[name='adoszam3']").val("");
 
+            $("input[name='cim']").prop('disabled', true);
+            $("input[name='emailcim']").prop('disabled', true);
+            $("input[name='telefonszam']").prop('disabled', true);
+            $("input[name='cegjegyzekszam1']").prop('disabled', true);
+            $("input[name='cegjegyzekszam2']").prop('disabled', true);
+            $("input[name='cegjegyzekszam3']").prop('disabled', true);
+            $("input[name='adoszam1']").prop('disabled', true);
+            $("input[name='adoszam2']").prop('disabled', true);
+            $("input[name='adoszam3']").prop('disabled', true);
 
-        $.ajax({
-            type: "POST",
-            url: "includes/vasarlo_listaz.php",
-            data: {id: id},
-            datatype: "json",
-            success: function (valasz) {
-                valasztomb = JSON.parse(valasz);
-                $("input[name='cim']").val(valasztomb["ceg_cim"]);
-                $("input[name='emailcim']").val(valasztomb["ceg_email"]);
-                $("input[name='telefonszam']").val(valasztomb["ceg_telefonszam"]);
-                $("input[name='cegjegyzekszam1']").val(valasztomb["ceg_cegjegyzekszam"].substr(0, 2));
-                $("input[name='cegjegyzekszam2']").val(valasztomb["ceg_cegjegyzekszam"].substr(2, 2));
-                $("input[name='cegjegyzekszam3']").val(valasztomb["ceg_cegjegyzekszam"].substr(4, 6));
-                $("input[name='adoszam1']").val(valasztomb["ceg_adoszam"].substr(0, 8));
-                $("input[name='adoszam2']").val(valasztomb["ceg_adoszam"].substr(8, 1));
-                $("input[name='adoszam3']").val(valasztomb["ceg_adoszam"].substr(9, 2));
+        }else {
 
-                $("input[name='cim']").prop('disabled', false);
-                $("input[name='emailcim']").prop('disabled', false);
-                $("input[name='telefonszam']").prop('disabled', false);
-                $("input[name='cegjegyzekszam1']").prop('disabled', false);
-                $("input[name='cegjegyzekszam2']").prop('disabled', false);
-                $("input[name='cegjegyzekszam3']").prop('disabled', false);
-                $("input[name='adoszam1']").prop('disabled', false);
-                $("input[name='adoszam2']").prop('disabled', false);
-                $("input[name='adoszam3']").prop('disabled', false);
-            }
-        });
+            $.ajax({
+                type: "POST",
+                url: "includes/vasarlo_listaz.php",
+                data: {id: id},
+                datatype: "json",
+                success: function (valasz) {
+                    valasztomb = JSON.parse(valasz);
+                    $("input[name='cim']").val(valasztomb["ceg_cim"]);
+                    $("input[name='emailcim']").val(valasztomb["ceg_email"]);
+                    $("input[name='telefonszam']").val(valasztomb["ceg_telefonszam"]);
+                    $("input[name='cegjegyzekszam1']").val(valasztomb["ceg_cegjegyzekszam"].substr(0, 2));
+                    $("input[name='cegjegyzekszam2']").val(valasztomb["ceg_cegjegyzekszam"].substr(2, 2));
+                    $("input[name='cegjegyzekszam3']").val(valasztomb["ceg_cegjegyzekszam"].substr(4, 6));
+                    $("input[name='adoszam1']").val(valasztomb["ceg_adoszam"].substr(0, 8));
+                    $("input[name='adoszam2']").val(valasztomb["ceg_adoszam"].substr(8, 1));
+                    $("input[name='adoszam3']").val(valasztomb["ceg_adoszam"].substr(9, 2));
+
+                    $("input[name='cim']").prop('disabled', false);
+                    $("input[name='emailcim']").prop('disabled', false);
+                    $("input[name='telefonszam']").prop('disabled', false);
+                    $("input[name='cegjegyzekszam1']").prop('disabled', false);
+                    $("input[name='cegjegyzekszam2']").prop('disabled', false);
+                    $("input[name='cegjegyzekszam3']").prop('disabled', false);
+                    $("input[name='adoszam1']").prop('disabled', false);
+                    $("input[name='adoszam2']").prop('disabled', false);
+                    $("input[name='adoszam3']").prop('disabled', false);
+                }
+            });
+        }
     }
 
     function mentes() {
@@ -117,6 +139,8 @@ include("../includes/connect.inc.php");
                     success: function (valasz) {
 
                         alert(valasz);
+                        $("#vasarlo").val(0);
+                        $("#vasarlo").trigger("change");
                     }
                 });
             }

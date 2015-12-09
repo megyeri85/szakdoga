@@ -20,9 +20,9 @@ if (isset($_POST["felhasznalo_nev"]) && isset($_POST["jog"]) && isset($_POST["em
     if (uresmezo_ellenorzes($felhasznalo_nev) && ($jog == 2 || $jog == 3)) {
         $ins = "INSERT INTO `felhasznalok`(`fk_vasarlo_id`, `nev`, `jelszo`, `jog_szint`) VALUES ('0','$felhasznalo_nev', sha1('$felhasznalo_nev'),'$jog')";
         if ($conn->query($ins)) {
-            echo "Az új admin létrehozva ".$email;
+//            echo "Az új admin létrehozva ".$email;
             $message = "Az új felhasznalo létrehozva: ".$felhasznalo_nev." névvel és ".$felhasznalo_nev." jelszóval";
-
+            echo $message.", amelyet kiküldtünk a(z) ".$email." címre";
             mail($email, 'Admin létrehozva', $message);
         } else {
             echo "mysql hiba";

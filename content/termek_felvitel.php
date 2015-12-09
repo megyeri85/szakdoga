@@ -78,6 +78,11 @@ include("../includes/connect.inc.php");
                 success: function (valasz) {
 
                     alert(valasz);
+                    $("input[name='termek_nev']").val("");
+                    $("input[name='termek_ar']").val("");
+                    $("input[name='termek_suly']").val("");
+                    $("#termek_kateg").val(0);
+                    $("#termek_leiras").val("");
                 }
             });
         }

@@ -102,6 +102,7 @@ include("../includes/connect.inc.php");
                         alert(valasz);
                         $("#jog_valasztas").val(0);
                         admin_jog_valtozas();
+                        location.reload();
                     }
                 });
             }

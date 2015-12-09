@@ -70,6 +70,16 @@
                 success: function (valasz) {
 
                     alert(valasz);
+                    $("input[name='cegnev']").val("");
+                    $("input[name='cim']").val("");
+                    $("input[name='emailcim']").val("");
+                    $("input[name='telefonszam']").val("");
+                    $("input[name='cegjegyzekszam1']").val("");
+                    $("input[name='cegjegyzekszam2']").val("");
+                    $("input[name='cegjegyzekszam3']").val("");
+                    $("input[name='adoszam1']").val("");
+                    $("input[name='adoszam2']").val("");
+                    $("input[name='adoszam3']").val("");
                 }
             });
 
